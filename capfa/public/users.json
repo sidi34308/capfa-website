@@ -1,0 +1,81 @@
+[
+  {
+      "type": "customer",
+      "id": 1,
+      "name": "Alice Johnson",
+      "past_purchases": [
+          {
+              "id": 1,
+              "image": "media/pic3.jpg",
+              "productname": "White jeans",
+              "price": "89.00",
+              "quantity": 9
+          },
+          {
+              "id": 3,
+              "image": "media/pic6.webp",
+              "productname": "Hat",
+              "price": "69.00"
+          },
+          {
+              "id": 5,
+              "image": "media/pic6.webp",
+              "productname": "Hat",
+              "price": "39.00"
+          }
+      ],
+      "password": "pass1234",
+      "balance": 600,
+      "image": "media/profile images/image1.png"
+  },
+  {
+      "type": "customer",
+      "id": 2,
+      "name": "Bob Williams",
+      "past_purchases": [
+          {
+              "id": 2,
+              "image": "media/pic5.jpg",
+              "productname": "Bag",
+              "price": "129.00",
+              "quantity": 2
+          },
+          {
+              "id": 4,
+              "image": "media/pic5.jpg",
+              "productname": "Hat",
+              "price": "79.00",
+              "quantity": 1
+          }
+      ],
+      "password": "customerpass",
+      "balance": 900,
+      "image": "media/profile images/image2.png"
+  },
+  {
+    "type": "seller",
+    "id": 3,
+    "name": "tom",
+    "past_purchases": [
+        {
+            "id": 2,
+            "image": "media/pic5.jpg",
+            "productname": "Bag",
+            "price": "129.00",
+            "quantity": 2
+        },
+        {
+            "id": 4,
+            "image": "media/pic5.jpg",
+            "productname": "Hat",
+            "price": "79.00",
+            "quantity": 1
+        }
+    ],
+    "password": "1234",
+    "balance": 0,
+    "image": "media/profile images/Photo by Good Faces.png"
+}
+
+  
+]
