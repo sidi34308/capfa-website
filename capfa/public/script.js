@@ -1,5 +1,5 @@
-import { fetchProducts } from './api-calls/products.js';
-import { fetchUsers } from './api-calls/users.js';
+import { fetchProducts, updateProduct } from './api-calls/products.js';
+import { fetchUsers, updateUser } from './api-calls/users.js';
 
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -78,14 +78,15 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
     console.log("All users:", users);
-
     const dashboardLink = document.createElement("a");
     dashboardLink.href = "seller.html";
     dashboardLink.textContent = "Dashboard";
 
     function updateDashboardLinkVisibility() {
+        const dashnav = document.querySelector("#seller-dashboard-nav")
+
         if (logged_in_user.type === "seller") {
-            document.body.appendChild(dashboardLink);
+            dashnav.appendChild(dashboardLink);
         } else {
             if (dashboardLink.parentNode) {
                 dashboardLink.parentNode.removeChild(dashboardLink);
@@ -492,13 +493,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         refreshTotalprice(cart);
         totalcart(cart);
         localStorage.setItem('cart', JSON.stringify(cart));
-        localStorage.setItem('users', JSON.stringify(users));
-
+        updateUser(users);
 
 
     };
 
-    localStorage.setItem('users', JSON.stringify(users));
+    updateUser(users);
     refreshCartCounter();
     renderCart();
 

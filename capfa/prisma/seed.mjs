@@ -1,45 +1,43 @@
-// prisma/seed.mjs
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 async function main() {
-    // Seed Users
     const users = await prisma.user.createMany({
         data: [
             {
                 type: 'admin',
                 name: 'Admin User',
                 password: 'admin123',
-                balance: 10000.00, // Example balance
+                balance: 10000.00,
                 image: "media/admin.jpg"
             },
             {
                 type: 'seller',
                 name: 'Seller 1',
                 password: 'seller123',
-                balance: 5000.00, // Example balance
+                balance: 5000.00,
                 image: "media/seller1.jpg"
             },
             {
                 type: 'seller',
                 name: 'Seller 2',
                 password: 'seller123',
-                balance: 5000.00, // Example balance
+                balance: 5000.00,
                 image: "media/seller2.jpg"
             },
             {
                 type: 'buyer',
                 name: 'Buyer 1',
                 password: 'buyer123',
-                balance: 2000.00, // Example balance
+                balance: 2000.00,
                 image: "media/buyer1.jpg"
             },
             {
                 type: 'buyer',
                 name: 'Buyer 2',
                 password: 'buyer123',
-                balance: 2000.00, // Example balance
+                balance: 2000.00,
                 image: "media/buyer2.jpg"
             }
         ]
@@ -47,7 +45,6 @@ async function main() {
 
     console.log({ user: { count: users.length } });
 
-    // Seed Products
     const products = await prisma.product.createMany({
         data: [
             {

@@ -1,6 +1,6 @@
 
-import { fetchProducts } from './api-calls/products.js';
-import { fetchUsers } from './api-calls/users.js';
+import { fetchProducts, updateProduct } from './api-calls/products.js';
+import { fetchUsers, updateUser } from './api-calls/users.js';
 
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -109,6 +109,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 console.log("New balance for seller", user.id, ":", user.balance);
             }
         });
+        updateUser(users);
+        updateProduct(products);
     }
 
     function addToPastHistory() {
@@ -126,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (userIndex !== -1) {
             users[userIndex] = updatedUser;
-            localStorage.setItem('users', JSON.stringify(users));
+            updateUser();
             console.log('User updated successfully:', updatedUser);
         } else {
             console.error('User not found for update');

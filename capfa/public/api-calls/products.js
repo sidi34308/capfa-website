@@ -1,4 +1,3 @@
-// products.js
 
 export async function fetchProducts() {
     try {
@@ -31,7 +30,7 @@ export async function postProduct(product) {
 export async function updateProduct(product) {
     try {
         const response = await fetch(`/api/product/${product.id}`, {
-            method: 'PUT',
+            method: 'PUTCH',
             headers: {
                 'Content-Type': 'application/json',
             },

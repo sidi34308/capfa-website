@@ -1,4 +1,4 @@
-import { fetchProducts } from './api-calls/products.js';
+import { fetchProducts, updateProduct } from './api-calls/products.js';
 import { fetchUsers } from './api-calls/users.js';
 
 
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             };
 
             products.push(newProduct);
-            localStorage.setItem('products', JSON.stringify(products));
+            updateProduct(products);
             successMessage.style.display = 'block';
 
             setTimeout(() => {
@@ -111,8 +111,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
             products = products.filter(product => product.id !== productId);
 
-            localStorage.setItem('products', JSON.stringify(products));
-
+            updateProduct(products);
             displaySellerProducts();
         }
     }

@@ -1,5 +1,3 @@
-// users.js
-
 export async function fetchUsers() {
     try {
         const response = await fetch('/api/product/users');
@@ -11,14 +9,14 @@ export async function fetchUsers() {
     }
 }
 
-export async function postUser(user) {
+export async function postUser(users) {
     try {
         const response = await fetch('/api/product/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(user),
+            body: JSON.stringify(users),
         });
         const data = await response.json();
         return data;
@@ -31,7 +29,7 @@ export async function postUser(user) {
 export async function updateUser(user) {
     try {
         const response = await fetch(`/api/product/users/${user.id}`, {
-            method: 'PUT',
+            method: 'PUTCH',
             headers: {
                 'Content-Type': 'application/json',
             },
