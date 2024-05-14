@@ -57,70 +57,70 @@ async function main() {
             {
                 image: "media/pic3.jpg",
                 productname: "White jeans",
-                price: 89.00,
+                price: 89,
                 quantity: 9,
                 sellerId: 3
             },
             {
                 image: "media/pic5.jpg",
                 productname: "Bag",
-                price: 129.00,
+                price: 129,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic6.webp",
                 productname: "Hat",
-                price: 69.00,
+                price: 69,
                 quantity: 10,
                 sellerId: 1
             },
             {
                 image: "media/pic5.jpg",
                 productname: "Hat",
-                price: 79.00,
+                price: 79,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic6.webp",
                 productname: "Hat",
-                price: 39.00,
+                price: 39,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic8.webp",
                 productname: "Regular Fit Textured-knit resort shirt",
-                price: 69.00,
+                price: 69,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic9.webp",
                 productname: "Regular Fit Linen-mix trousers",
-                price: 89.00,
+                price: 89,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic10.jpg",
                 productname: "Relaxed Jeans",
-                price: 79.00,
+                price: 79,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic11.jpg",
                 productname: "Loose Jeans",
-                price: 99.00,
+                price: 99,
                 quantity: 10,
                 sellerId: 3
             },
             {
                 image: "media/pic12.jpg",
                 productname: "Reglar Fit Cargo trousers",
-                price: 120.00,
+                price: 120,
                 quantity: 10,
                 sellerId: 3
             },

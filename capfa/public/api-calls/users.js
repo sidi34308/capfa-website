@@ -11,7 +11,7 @@ export async function fetchUsers() {
 
 export async function postUser(users) {
     try {
-        const response = await fetch('/api/product/users', {
+        const response = await fetch('/api/product/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -28,17 +28,20 @@ export async function postUser(users) {
 
 export async function updateUser(user) {
     try {
-        const response = await fetch(`/api/product/users/${user.id}`, {
-            method: 'PUTCH',
+        const response = await fetch(`/api/product/user`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(user),
         });
+        if (!response.ok) {
+            throw new Error(`Failed to update user: ${response.statusText}`);
+        }
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log('Error updating user:', error);
+        console.error('Error updating user:', error);
         throw error;
     }
 }

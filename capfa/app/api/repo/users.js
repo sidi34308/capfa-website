@@ -1,7 +1,11 @@
 import prisma from "../repo/prisma";
 
 export async function getAllUsers() {
-    return prisma.user.findMany();
+    return prisma.user.findMany({
+        include: {
+            past_purchases: true,
+        }
+    });
 }
 
 export async function getUserById(id) {
@@ -27,6 +31,7 @@ export async function updateUser(id, data) {
             id: parseInt(id),
         },
         data: data,
+
     });
 }
 

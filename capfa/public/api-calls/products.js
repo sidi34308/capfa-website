@@ -29,7 +29,7 @@ export async function postProduct(product) {
 
 export async function updateProduct(product) {
     try {
-        const response = await fetch(`/api/product/${product.id}`, {
+        const response = await fetch(`/api/products`, {
             method: 'PUTCH',
             headers: {
                 'Content-Type': 'application/json',

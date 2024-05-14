@@ -8,11 +8,12 @@ datasource db {
 }
 
 // Define your models
+
 model Product {
   id          Int    @id @default(autoincrement())
   image       String
   productname String
-  price       Float
+  price       Int
   quantity    Int
   seller      User   @relation(fields: [sellerId], references: [id])
   sellerId    Int
@@ -22,8 +23,8 @@ model User {
   id             Int       @id @default(autoincrement())
   type           String
   name           String
-  past_purchases Product[]
+  past_purchases Product[] // Define past_purchases as an array of Products
   password       String
-  balance        Float
+  balance        Int
   image          String
 }

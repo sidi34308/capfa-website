@@ -1,6 +1,6 @@
 
-import { fetchProducts, updateProduct } from './api-calls/products.js';
-import { fetchUsers, updateUser } from './api-calls/users.js';
+import { fetchProducts, postProduct } from './api-calls/products.js';
+import { fetchUsers, postUser, updateUser } from './api-calls/users.js';
 
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     function calculateTotal(cart) {
         let total = 0;
         for (const cartItem of cart) {
-            const product = fetchProduct(cartItem.product_Id);
+            const product = fetchproduct(cartItem.product_Id);
             if (product) {
                 total += cartItem.quantity * product.price;
             }
@@ -74,14 +74,15 @@ document.addEventListener("DOMContentLoaded", async function () {
             const remainingBalance = logged_in_user.balance - total;
             logged_in_user.balance = remainingBalance;
             console.log("Remaining balance:", logged_in_user.balance);
-
+            console.log("user", logged_in_user);
             transferAmount(total);
-            addToPastHistory();
-            updateUser(users, logged_in_user);
+            addToPastHistory(logged_in_user);
+            console.log("updated user", logged_in_user)
+            updateuser(logged_in_user);
             localStorage.setItem('logged_in_user', JSON.stringify(logged_in_user));
             // Display success message and redirect to main page
             alert("Purchase successful!");
-            window.location.href = 'home.html';
+            // window.location.href = 'home.html';
         } else {
             // Display error message for insufficient balance
             const errorMessage = document.getElementById('error-message');
@@ -101,6 +102,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     }
 
+
     function updateSellerBalance(sellerId, amount) {
         users.forEach(user => {
             if (user.type == "seller" && user.id == sellerId) {
@@ -109,26 +111,26 @@ document.addEventListener("DOMContentLoaded", async function () {
                 console.log("New balance for seller", user.id, ":", user.balance);
             }
         });
-        updateUser(users);
-        updateProduct(products);
     }
 
-    function addToPastHistory() {
+    function addToPastHistory(user) {
         cart.forEach(item => {
-            const product = fetchProduct(item.product_Id);
+            const product = fetchproduct(item.product_Id);
             if (product) {
                 product.quantity = item.quantity;
-                logged_in_user.past_purchases.push(product);
+                user.past_purchases.push(product);
             }
         });
+        updateUser(user);
     }
 
-    function updateUser(users, updatedUser) {
-        const userIndex = users.findIndex(user => user.id === updatedUser.id);
+    async function updateuser(updatedUser) {
+        console.log(updatedUser);
+        const userIndex = users.findIndex(user => user.id == updatedUser.id);
 
         if (userIndex !== -1) {
             users[userIndex] = updatedUser;
-            updateUser();
+            await updateUser(updatedUser);
             console.log('User updated successfully:', updatedUser);
         } else {
             console.error('User not found for update');
@@ -136,7 +138,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     // Fetch product function
-    function fetchProduct(id) {
+    function fetchproduct(id) {
         return products.find(product => product.id == id);
     }
 

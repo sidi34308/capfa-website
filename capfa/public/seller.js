@@ -1,4 +1,4 @@
-import { fetchProducts, updateProduct } from './api-calls/products.js';
+import { fetchProducts, postProduct } from './api-calls/products.js';
 import { fetchUsers } from './api-calls/users.js';
 
 
@@ -81,17 +81,23 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         if (productName && productPrice && productQuantity && productImage) {
             console.log("product url ", `media/${productImage.name}`);
+            const priceInt = parseInt(productPrice);
+            const quantityInt = parseInt(productQuantity);
+            const idInt = parseInt(products.length);
+
+            console.log("product url ", `media/${productImage.name}`);
             const newProduct = {
-                id: products.length,
+
                 image: `media/${productImage.name}`,
                 productname: productName,
-                price: productPrice,
-                quantity: productQuantity,
-                seller_ID: logged_in_user.id
-            };
+                price: priceInt,
+                quantity: quantityInt,
+                sellerId: logged_in_user.id
 
+            };
+            console.log(newProduct);
             products.push(newProduct);
-            updateProduct(products);
+            postProduct(newProduct);
             successMessage.style.display = 'block';
 
             setTimeout(() => {

@@ -21,10 +21,10 @@ export async function POST(request) {
     }
 }
 
-export async function PUTCH(request, { params }) {
+export async function PUT(request, { params }) {
     try {
         const userData = await request.json();
-        const updatedUser = await updateUser(params.id, userData);
+        const updatedUser = await updateUser(userData.id, userData);
         return new Response(JSON.stringify(updatedUser), { status: 200 });
     } catch (error) {
         console.error(error);

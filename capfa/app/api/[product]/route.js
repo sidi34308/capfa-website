@@ -27,6 +27,8 @@ export async function POST(request) {
 }
 
 export async function PUTCH(request, { params }) {
+
+    console.log("here");
     try {
         const productData = await request.json();
         const updatedProduct = await updateProduct(params.id, productData);
